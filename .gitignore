@@ -4,3 +4,4 @@ venv/
 __pycache__/
 login.txt
 *.db
+*_input.txt
