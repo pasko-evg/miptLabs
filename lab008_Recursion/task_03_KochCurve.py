@@ -3,48 +3,41 @@
 # В результате образуется ломаная, состоящая из четырёх звеньев длины 1/3.
 # На следующем шаге повторяем операцию для каждого из четырёх получившихся звеньев и т. д… Предельная кривая и есть кривая Коха.
 
-
+import sys
 from turtle import Screen, Turtle
 
 
 def draw(length, n, turtle):
 
-    # при нулевом - разворот
+
+    # при нулевом - рисуем прямую
     if n == 0:
-        turtle.left(180)
-        return
-
-    if n == 1:
-        length = length / 3
-        turtle.forward(length)
-        turtle.left(60)
-        turtle.forward(length)
-        turtle.right(120)
-        turtle.forward(length)
-        turtle.left(60)
         turtle.forward(length)
         return
 
-    # x = l / (n + 1)
-    # for i in range(n):
-    #     turtle.forward(x)
-    #     turtle.left(45)
-    #     draw(0.5 * x * (n - i - 1), n - i - 1, turtle)
-    #     turtle.left(90)
-    #     draw(0.5 * x * (n - i - 1), n - i - 1, turtle)
-    #     turtle.right(135)
+    length = length / 3
+    draw(length, n - 1, turtle)
+    turtle.left(60)
+    draw(length, n - 1, turtle)
+    turtle.right(120)
+    draw(length, n - 1, turtle)
+    turtle.left(60)
+    draw(length, n - 1, turtle)
 
-    # turtle.forward(x)
-    # turtle.left(180)
-    # turtle.forward(l)
 
 
 if __name__ == "__main__":
+    sys.setrecursionlimit(20)
+
     screen = Screen()
     turtle = Turtle()
+    turtle.shape('turtle')
+    turtle.penup()
+    turtle.goto(-400, 0)
+    turtle.pendown()
     turtle.speed('fastest')
 
-    draw(300, 1, turtle)
+    draw(800, 5, turtle)
     input()
     turtle.end_fill()
 
