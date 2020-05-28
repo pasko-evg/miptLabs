@@ -12,15 +12,15 @@
 
 
 debug = False
-TESTS = [([0x1, 0x23], 0x22),
-         ([0xf0, 0x0f], 0xff)]
+TESTS = [(['1', '23'], '22'),
+         (['f0', '0f'], 'ff')]
 
 
 def calc_xor(numbers: list):
-    a = numbers[0]
-    b = numbers[1]
-    print(a ^ b)
-    return a ^ b
+    a = int(numbers[0], 16)
+    b = int(numbers[1], 16)
+    rezult = '{0:x}'.format(a ^ b)
+    return rezult
 
 
 if __name__ == '__main__':
@@ -30,8 +30,6 @@ if __name__ == '__main__':
         assert result == test[1], "Ожидаемый ответ: {0}, полученный овет: {1}".format(
             test[1], result)
 
-    parameters = []
-    for i in range(3):
-        parameters.append(input())
+    parameters = input().split()
 
     print(calc_xor(parameters))
