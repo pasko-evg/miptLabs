@@ -20,4 +20,5 @@ def main():
 
 
 if __name__ == '__main__':
+    #TODO: не реализовано
     main()
