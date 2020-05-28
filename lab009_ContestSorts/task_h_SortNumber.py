@@ -9,8 +9,9 @@ TESTS = [(['5', '5 23 3 43 123'], '3 23 123 43 5')]
 
 
 def sort_number(params: list):
-    source_array = params[1].split()
-    result = ''
+    revers_array = [i.rjust(6, '0')[::-1] for i in params[1].split()]
+    revers_array.sort()
+    result = ' '.join([str(int(i[::-1])) for i in revers_array])
     return result
 
 
